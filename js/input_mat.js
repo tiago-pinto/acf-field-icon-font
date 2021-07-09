@@ -2,15 +2,10 @@
 	
 
 	function initialize_field( $el ) {
-
 		$el.find('select').on('change', function(){
-			var $self = $(this);
-			var $iconPreviewSpace = $(this).parent().find('.ef-icon-preview');
-			console.log($iconPreviewSpace);
-			$iconPreviewSpace.removeClass().addClass(this.value + ' ' + 'ef-icon-preview');
-
+			var previewMat = document.getElementById('acf-mat-icon-preview');
+			previewMat.innerHTML = this.value;
 		});
-		
 	}
 	
 	

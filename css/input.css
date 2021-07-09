@@ -7,9 +7,8 @@
     min-width: 48px;
     min-height: 46px;
 }
-.ef-icon-wrapper {
-    width: 18%;
-    text-align: center;
+.mat-icon-wrapper {
+    display: flex;
 }
 .ef-icon-wrapper select{
     min-width: 140px;

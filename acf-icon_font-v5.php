@@ -138,14 +138,15 @@ class acf_field_icon_font extends acf_field
         if (!is_null($field['default_icon']) && is_null($field['value']))
             $this->selectedIcon = $field['default_icon'];
 
-        echo '<div class="ef-icon-wrapper">';
-        echo '<div class="ef-icon-preview ' . $this->selectedIcon . '"></div>';
+        echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+        echo '<div class="mat-icon-wrapper">';
+        echo '<span id="acf-mat-icon-preview" class="material-icons">' . $this->selectedIcon . '</span>';
         echo '<select id="' . $field['id'] . '" class="' . $field['class'] . ' icon-font-selector " name="' . $field['name'] . '">';
 
         if (is_array($this->iconNames)) {
             foreach ($this->iconNames as $key => $value) {
                 $selected = ($this->selectedIcon == $value) ? "selected='selected'" : null;
-                echo '<option class="' . $value . '" value="' . $value . '" ' . $selected . '>' . $value . '</option>';
+                echo '<span class="material-icons">' . $value . '</span><option class="' . $value . '" value="' . $value . '" ' . $selected . '>' . $value . '</option>';
             }
         }
         echo '</select>';
@@ -175,13 +176,13 @@ class acf_field_icon_font extends acf_field
         $dir = plugin_dir_url(__FILE__);
 
         // register & include JS
-        wp_register_script('acf-input-icon_font_js', "{$dir}js/input.js");
+        wp_register_script('acf-input-icon_font_js', "{$dir}js/input_mat.js");
         wp_enqueue_script('acf-input-icon_font_js');
 
         // register & include CSS
-        wp_register_style('acf-input-icon_font_el', "{$dir}css/et-line.css");
+        wp_register_style('acf-input-icon_font', "{$dir}css/mat-ui.css");
         wp_register_style('acf-input-icon_font_input', "{$dir}css/input.css");
-        wp_enqueue_style('acf-input-icon_font_el');
+        wp_enqueue_style('acf-input-icon_font');
         wp_enqueue_style('acf-input-icon_font_input');
 
 
